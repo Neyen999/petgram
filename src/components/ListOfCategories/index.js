@@ -6,6 +6,7 @@ import { List, Item } from './styles'
 
 export const ListOfCategories = () => {
   const [categories, setCategories] = useState([])
+  const [showFixed, setShowFixed] = useState(false)
 
   useEffect(() => {
     window.fetch('https://petgram-server-neyen.vercel.app/categories')
@@ -15,12 +16,31 @@ export const ListOfCategories = () => {
       })
   }, [])
 
+  useEffect(() => {
+    const onScroll = e => {
+      const newShowFixed = window.scrollY > 200
+      showFixed !== newShowFixed && setShowFixed(newShowFixed)
+    }
+    document.addEventListener('scroll', onScroll)
+
+    return () => document.removeEventListener('scroll', onScroll)
+  })
+
+  const renderList = (fixed) => {
+    return (
+      <List className={fixed ? 'fixed' : ''}>
+        {
+          // eslint-disable-next-line react/jsx-key
+          categories.map(category => <Item key={category.id}><Category {...category} /></Item>)
+        }
+      </List>
+    )
+  }
+
   return (
-    <List>
-      {
-        // eslint-disable-next-line react/jsx-key
-        categories.map(category => <Item key={category.id}><Category {...category} /></Item>)
-      }
-    </List>
+    <>
+      {renderList()}
+      {showFixed && renderList(true)}
+    </>
   )
 }
