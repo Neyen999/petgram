@@ -1,11 +1,11 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { fadeIn } from '../../styles/animation'
 
 export const List = styled.ul`
   display: flex;
   overflow: scroll;
   width: 100%;
-  &.fixed {
+  ${props => props.fixed && css`
     ${fadeIn()}
     background-color: #fff;
     border-radius: 60px;
@@ -20,7 +20,7 @@ export const List = styled.ul`
     transform: scale(.5);
     z-index: 1;
     transition: 400ms ease-in-out;
-  }
+  `}
   &::-webkit-scrollbar {
     display: none;
   }

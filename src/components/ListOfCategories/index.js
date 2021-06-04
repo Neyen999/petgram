@@ -1,20 +1,27 @@
 import React, { useEffect, useState } from 'react'
 import { Category } from '../Category'
-
 import { List, Item } from './styles'
 // import { categories as mockCategories } from '../../../api/db.json'
 
-export const ListOfCategories = () => {
+function useCategoriesData () {
   const [categories, setCategories] = useState([])
-  const [showFixed, setShowFixed] = useState(false)
-
+  const [loading, setLoading] = useState(false)
   useEffect(() => {
+    setLoading(true)
     window.fetch('https://petgram-server-neyen.vercel.app/categories')
       .then(response => response.json())
       .then(response => {
         setCategories(response)
+        setLoading(false)
       })
   }, [])
+
+  return { categories, loading }
+}
+
+export const ListOfCategories = () => {
+  const { categories, loading } = useCategoriesData()
+  const [showFixed, setShowFixed] = useState(false)
 
   useEffect(() => {
     const onScroll = e => {
@@ -28,10 +35,10 @@ export const ListOfCategories = () => {
 
   const renderList = (fixed) => {
     return (
-      <List className={fixed ? 'fixed' : ''}>
+      <List fixed={fixed}>
         {
+          loading ? 'Cargando...' : categories.map(category => <Item key={category.id}><Category {...category} /></Item>)
           // eslint-disable-next-line react/jsx-key
-          categories.map(category => <Item key={category.id}><Category {...category} /></Item>)
         }
       </List>
     )
