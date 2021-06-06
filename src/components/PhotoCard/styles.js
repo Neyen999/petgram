@@ -3,6 +3,10 @@ import { fadeIn } from '../../styles/animation'
 
 // Vamos a crear una función para hacer totalmente reutilizable esta animacion, para eso importamos css y creamos un metodo llamado fadeIn
 
+export const Article = styled.article`
+  min-height: 200px;
+`
+
 export const ImgWrapper = styled.div`
   border-radius: 10px;
   display: block;
