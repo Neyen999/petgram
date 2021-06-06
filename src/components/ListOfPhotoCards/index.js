@@ -5,7 +5,7 @@ import { photos } from '../../../api/db.json'
 export const ListOfPhotoCards = () => {
   return (
     <ul>
-      {photos.map(photo => <PhotoCard key={photo.id} src={photo.src} />)}
+      {photos.map(photo => <PhotoCard key={photo.id} id={photo.id} src={photo.src} />)}
     </ul>
   )
 }
