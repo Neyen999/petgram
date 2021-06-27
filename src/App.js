@@ -19,7 +19,7 @@ export const App = () => {
           ? <PhotoCardWithQuery id={detailId} />
           : <>
             <ListOfCategories />
-            <ListOfPhotoCards categoryId={2} />
+            <ListOfPhotoCards categoryId={1} />
             </>
       }
     </>
