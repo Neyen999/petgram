@@ -1,4 +1,3 @@
-import React from 'react'
 import { useMutation, gql } from '@apollo/client'
 
 const LIKE_PHOTO = gql`

@@ -37,7 +37,7 @@ export const ListOfCategories = () => {
     return (
       <List fixed={fixed}>
         {
-          loading ? 'Cargando...' : categories.map(category => <Item key={category.id}><Category {...category} /></Item>)
+          loading ? 'Cargando...' : categories.map(category => <Item key={category.id}><Category {...category} path={`/pet/${category.id}`} /></Item>)
           // eslint-disable-next-line react/jsx-key
         }
       </List>

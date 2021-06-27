@@ -35,7 +35,7 @@ export const PhotoCard = ({ id, likes = 0, src }) => {
               </ImgWrapper>
             </a>
 
-            <FavButton liked={liked} likes={likes} onClick={handleFavClick}/> 
+            <FavButton liked={liked} likes={likes} onClick={handleFavClick} />
           </>
       }
     </Article>
