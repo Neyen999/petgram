@@ -15,7 +15,7 @@ export const App = () => {
       <Router>
         <Home path='/' />
         <Home path='/pet/:id' />
-        <Detail path="/detail/:detailId"/>
+        <Detail path='/detail/:detailId' />
       </Router>
       <NavBar />
     </>
