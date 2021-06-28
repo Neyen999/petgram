@@ -8,6 +8,7 @@ import { Detail } from './pages/Detail'
 import { Favs } from './pages/Favs'
 import { User } from './pages/User'
 import { NotRegisteredUser } from './pages/NotRegisteredUser'
+import { UserForm } from './components/UserForm'
 import { Router } from '@reach/router'
 import Context from './Context'
 
@@ -33,6 +34,7 @@ export const App = () => {
           <Router>
             <NotRegisteredUser path="/favs"/>
             <NotRegisteredUser path="/users"/>
+            <UserForm title="Iniciar Sesión" path="/login" />
           </Router>
         }    
       </Context.Consumer>
