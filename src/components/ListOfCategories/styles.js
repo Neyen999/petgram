@@ -3,8 +3,10 @@ import { fadeIn } from '../../styles/animation'
 
 export const List = styled.ul`
   display: flex;
-  overflow: scroll;
+  overflow-x: scroll;
   width: 100%;
+  border-bottom: 1px solid #f1f1f1;
+  padding: 8px;
   ${props => props.fixed && css`
     ${fadeIn()}
     background-color: #fff;
@@ -20,9 +22,20 @@ export const List = styled.ul`
     transform: scale(.5);
     z-index: 1;
     transition: 400ms ease-in-out;
+    overflow: hidden;
   `}
   &::-webkit-scrollbar {
-    display: none;
+    display: block;
+    border-radius: 20px;
+    height: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: #000;
+    border-radius: 20px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #f1f1f1;
+    border-radius: 20px;
   }
 `
 

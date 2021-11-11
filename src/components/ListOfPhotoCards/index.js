@@ -8,8 +8,8 @@ export const ListOfPhotoCards = ({ categoryId }) => {
   if (loading) return <h2>Loading...</h2>
   if (error) return <h2>Error!</h2>
   return (
-    <ul>
-      {data.photos.map(photo => <PhotoCard key={photo.id} id={photo.id} src={photo.src} likes={photo.likes} />)}
+    <ul className="photo--card">
+      {data.photos.map(photo => <PhotoCard liked={photo.liked} key={photo.id} id={photo.id} src={photo.src} likes={photo.likes} />)}
     </ul>
   )
 }

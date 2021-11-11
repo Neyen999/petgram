@@ -18,6 +18,10 @@ export const GlobalStyle = createGlobalStyle`
     list-style: none;
   }
 
+  .photo--card {
+    margin-top: 40px;
+  }
+
   button {
     background: transparent;
     border: 0;

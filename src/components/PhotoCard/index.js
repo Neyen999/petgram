@@ -1,32 +1,35 @@
 import React from 'react'
-import { ImgWrapper, Img, Article } from './styles'
-import { useLocalStorage } from '../../hooks/useLocalStorage'
+import { ImgWrapper, Img, Article, UserInfo, UserName } from './styles' 
+import { Button } from '../FavButton/styles'
+import { BsThreeDots } from "react-icons/bs" 
 import { useNearScreen } from '../../hooks/useNearScreen'
 import { FavButton } from '../FavButton'
 import { ToggleLikeMutation } from '../../container/ToggleLikeMutation'
 import { Link } from '@reach/router'
 
-// const DEFAULT_IMAGE = 'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
-
-export const PhotoCard = ({ id, likes = 0, src }) => {
+export const PhotoCard = ({ id, liked, likes = 0, src }) => {
   const [show, ref] = useNearScreen()
 
-  const key = `like-${id}`
-  const [liked, setLiked] = useLocalStorage(key, false)
 
   const { mutation, mutationLoading, mutationError } = ToggleLikeMutation()
 
   const handleFavClick = () => {
-    !liked && mutation({
+    mutation({
       variables: {
         input: { id }
       }
     })
-    setLiked(!liked)
   }
-  console.log('{ mutation, mutationLoading, mutationError }', { mutation, mutationLoading, mutationError })
+
+
   return (
     <Article ref={ref}>
+      <UserInfo>
+        <UserName>userName</UserName>
+        <Button>
+          <BsThreeDots />
+        </Button>
+      </UserInfo>
       {
         show &&
           <>
